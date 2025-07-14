@@ -1,5 +1,7 @@
 'use client';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import ChartBarIcon from "@/components/common/icons/ChartBarIcon";
+import DotsVerticalIcon from "@/components/common/icons/DotsVerticalIcon";
 
 const data = [
   { name: "asdasd", value: 100 },
@@ -13,9 +15,7 @@ export default function ChartCard() {
       <div className="flex items-start justify-between mb-3.5">
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#3DD6A6] to-[#5B7FFF] flex items-center justify-center">
-            <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-              <path d="M4 12l3-3 4 4 5-7" stroke="#fff" strokeWidth="2" fill="none" />
-            </svg>
+            <ChartBarIcon size={20} color="#fff" />
           </div>
           <div>
             <div className="font-bold text-sm text-[#1A2233]">order amount</div>
@@ -23,11 +23,7 @@ export default function ChartCard() {
           </div>
         </div>
         <div className="mt-2 cursor-pointer">
-          <svg width="15" height="15" fill="none" viewBox="0 0 20 20">
-            <circle cx="10" cy="5" r="1" fill="#A3A8AF"/>
-            <circle cx="10" cy="10" r="1" fill="#A3A8AF"/>
-            <circle cx="10" cy="15" r="1" fill="#A3A8AF"/>
-          </svg>
+          <DotsVerticalIcon size={15} color="#A3A8AF" />
         </div>
       </div>
       
