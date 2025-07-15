@@ -3,11 +3,20 @@
 import { useState } from "react";
 import AddChartModal from "./AddChartModal";
 
-export default function AddChartButton({ onClick, className = "" }) {
+export default function AddChartButton({ className = "", selectedDashboardId, onChartCreated }) {
   const [isAddChartModalOpen, setIsAddChartModalOpen] = useState(false);
 
   const handleOpenModal = () => {
+    if (!selectedDashboardId) {
+      alert("Please select a dashboard first");
+      return;
+    }
     setIsAddChartModalOpen(true);
+  };
+
+  const handleChartCreated = (newChart) => {
+    onChartCreated?.(newChart);
+    setIsAddChartModalOpen(false);
   };
 
   return (
@@ -19,7 +28,13 @@ export default function AddChartButton({ onClick, className = "" }) {
         + Add Chart
       </button>
       <>
-      {isAddChartModalOpen ? <AddChartModal onClose={() => setIsAddChartModalOpen(false)} /> : "" }
+      {isAddChartModalOpen ? (
+        <AddChartModal 
+          onClose={() => setIsAddChartModalOpen(false)} 
+          onSubmit={handleChartCreated}
+          dashboardId={selectedDashboardId}
+        />
+      ) : "" }
     </>
    </>
   );

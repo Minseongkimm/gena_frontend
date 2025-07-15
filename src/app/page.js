@@ -15,7 +15,7 @@ export default function Home() {
   const { dashboards } = useDashboardsList(refreshTrigger);
   const [selectedDashboardId, setSelectedDashboardId] = useState(null);
   const { dashboard: selectedDashboard } = useDashboard(selectedDashboardId);
-  const { charts, isLoading } = useDashboardCharts(selectedDashboardId);
+  const { charts, isLoading } = useDashboardCharts(selectedDashboardId, refreshTrigger);
 
   const handleDashboardId = (dashboardId) => {
     setSelectedDashboardId(dashboardId);
@@ -26,13 +26,21 @@ export default function Home() {
     setSelectedDashboardId(newDashboard.id);
   };
 
+  const handleChartCreated = (newChart) => {
+    setRefreshTrigger(prev => prev + 1);
+  };
+
   return (
     <div>
       <div className="flex flex-col md:flex-row md:justify-between md:items-center px-8 py-5 bg-[#f7fafd] gap-4">
         <HeaderTitle selectedDashboard={selectedDashboard}/>
         <div className="flex justify-end w-full gap-5">
           <AddDashboardButton className="w-1/2 md:w-auto" onDashboardCreated={handleDashboardCreated} />
-          <AddChartButton className="w-1/2 md:w-auto" />
+          <AddChartButton 
+            className="w-1/2 md:w-auto" 
+            selectedDashboardId={selectedDashboardId}
+            onChartCreated={handleChartCreated}
+          />
         </div>
       </div>
       <div className="grid grid-cols-4">

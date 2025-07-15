@@ -37,19 +37,27 @@
       "order": 0
     },
     {
-      "id": "chart-2",
-      "dashboardId": "dashboard-1",
+      "id": "chart-1752564440468",
+      "dashboardId": "dashboard-2",
       "type": "line",
-      "title": "Orders Over Time",
-      "dataEndpoint": "/api/data/orders-over-time",
+      "title": "abcbc",
+      "dataEndpoint": "/api/data/abcbc",
+      "order": 0
+    },
+    {
+      "id": "chart-1752564458801",
+      "dashboardId": "dashboard-2",
+      "type": "bar",
+      "title": "test",
+      "dataEndpoint": "/api/data/test",
       "order": 1
     },
     {
-      "id": "chart-3",
-      "dashboardId": "dashboard-1",
+      "id": "chart-1752564464161",
+      "dashboardId": "dashboard-2",
       "type": "number",
-      "title": "Total Revenue",
-      "dataEndpoint": "/api/data/total-revenue",
+      "title": "asdfadsf",
+      "dataEndpoint": "/api/data/asdfadsf",
       "order": 2
     }
   ],
@@ -84,6 +92,41 @@
     },
     "total-revenue": {
       "value": 98123
+    },
+    "test33": [
+      {
+        "label": "asd",
+        "value": 1234
+      },
+      {
+        "label": "abasb",
+        "value": 12512
+      }
+    ],
+    "abcbc": {
+      "labels": [
+        "asdasd",
+        "aaa",
+        "abc"
+      ],
+      "values": [
+        123213,
+        11,
+        2156
+      ]
+    },
+    "test": {
+      "labels": [
+        "asdasdsadasd",
+        "abasb"
+      ],
+      "values": [
+        11,
+        347
+      ]
+    },
+    "asdfadsf": {
+      "value": 111
     }
   }
 }

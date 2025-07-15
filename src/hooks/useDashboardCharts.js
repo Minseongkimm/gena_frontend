@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useDashboardCharts(dashboardId) {
+export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
   const [charts, setCharts] = useState([]);
   const [chartData, setChartData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +63,7 @@ export function useDashboardCharts(dashboardId) {
     }
     
     fetchDashboardCharts();
-  }, [dashboardId]);
+  }, [dashboardId, refreshTrigger]);
 
   return { charts, chartData, isLoading, error };
 } 

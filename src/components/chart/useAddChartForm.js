@@ -20,7 +20,7 @@ export default function useAddChartForm(initialChartType = "bar") {
   };
 
   const isAddDisabled = !labelInput.trim() || !valueInput.trim() || isNaN(Number(valueInput));
-  const isSubmitDisabled = !title.trim() || data.length === 0;
+  const isSubmitDisabled = !title.trim() || (chartType === "number" ? !valueInput.trim() : data.length === 0);
 
   return {
     title, setTitle,

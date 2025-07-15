@@ -15,14 +15,16 @@ export default function ChartCard({ chartType = "bar", data, title}) {
         highest: data?.value || 0
       };
     }
-    if (data?.values) {
+    
+    if (data?.values && Array.isArray(data.values)) {
       const values = data.values;
       return {
-        total: values.reduce((sum, val) => sum + val, 0),
+        total: values.reduce((sum, val) => sum + (parseFloat(val) || 0), 0),
         categories: values.length,
-        highest: Math.max(...values)
+        highest: Math.max(...values.map(val => parseFloat(val) || 0))
       };
     }
+    
     return {
       total: 0,
       categories: 0,
