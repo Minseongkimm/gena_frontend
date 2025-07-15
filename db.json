@@ -31,7 +31,7 @@
     {
       "id": "chart-1",
       "dashboardId": "dashboard-1",
-      "type": "bar",
+      "type": "line",
       "title": "Signups by Region",
       "dataEndpoint": "/api/data/signups-by-region",
       "order": 0
@@ -42,7 +42,19 @@
       "type": "line",
       "title": "abcbc",
       "dataEndpoint": "/api/data/abcbc",
-      "order": 0
+      "order": 1,
+      "data": {
+        "labels": [
+          "aaa",
+          "abc",
+          "asdasd"
+        ],
+        "values": [
+          11,
+          2156,
+          123123
+        ]
+      }
     },
     {
       "id": "chart-1752564458801",
@@ -50,7 +62,17 @@
       "type": "bar",
       "title": "test",
       "dataEndpoint": "/api/data/test",
-      "order": 1
+      "order": 2,
+      "data": {
+        "labels": [
+          "asdasdsadasd",
+          "abasb"
+        ],
+        "values": [
+          11,
+          347
+        ]
+      }
     },
     {
       "id": "chart-1752564464161",
@@ -58,20 +80,21 @@
       "type": "number",
       "title": "asdfadsf",
       "dataEndpoint": "/api/data/asdfadsf",
-      "order": 2
+      "order": 0,
+      "data": {
+        "value": 111
+      }
     }
   ],
   "chartData": {
     "signups-by-region": {
       "labels": [
-        "North America",
-        "Europe",
-        "Asia"
+        "aaa",
+        "a cc"
       ],
       "values": [
-        120,
-        95,
-        180
+        111,
+        123
       ]
     },
     "orders-over-time": {
@@ -105,14 +128,14 @@
     ],
     "abcbc": {
       "labels": [
-        "asdasd",
         "aaa",
-        "abc"
+        "abc",
+        "asdasd"
       ],
       "values": [
-        123213,
         11,
-        2156
+        2156,
+        123123
       ]
     },
     "test": {

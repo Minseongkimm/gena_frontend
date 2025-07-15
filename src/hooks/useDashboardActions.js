@@ -110,9 +110,74 @@ export function useDashboardActions() {
     }
   };
 
+  const updateChart = async (chartData) => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const chartResponse = await fetch(`http://localhost:4000/charts/${chartData.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: chartData.id,
+          dashboardId: chartData.dashboardId,
+          type: chartData.type,
+          title: chartData.title,
+          dataEndpoint: `/api/data/${chartData.dataEndpoint}`,
+          order: chartData.order || 0
+        }),
+      });
+
+      if (!chartResponse.ok) {
+        throw new Error(`Failed to update chart: ${chartResponse.status}`);
+      }
+
+      const updatedChart = await chartResponse.json();
+
+      // 2. 차트 데이터 업데이트
+      if (chartData.chartData) {
+        const dataKey = chartData.dataEndpoint;
+        
+        const existingDataResponse = await fetch("http://localhost:4000/chartData");
+        let existingData = {};
+        
+        if (existingDataResponse.ok) {
+          existingData = await existingDataResponse.json();
+        }
+        
+        const updatedData = {
+          ...existingData,
+          [dataKey]: chartData.chartData
+        };
+        
+        const chartDataResponse = await fetch("http://localhost:4000/chartData", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedData),
+        });
+
+        if (!chartDataResponse.ok) {
+          console.warn("Failed to update chart data:", chartDataResponse.status);
+        }
+      }
+
+      return updatedChart;
+    } catch (err) {
+      setError(err.message);
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return {
     createDashboard,
     createChart,
+    updateChart,
     isLoading,
     error
   };
