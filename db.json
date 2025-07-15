@@ -4,13 +4,27 @@
       "id": "dashboard-1",
       "name": "Marketing KPIs",
       "description": "Marketing KPIs for employee",
-      "charts": ["chart-1", "chart-2", "chart-3"]
+      "charts": [
+        "chart-1",
+        "chart-2",
+        "chart-3"
+      ]
     },
     {
       "id": "dashboard-2",
       "name": "Marketing KPIs2",
       "description": "Marketing KPIs for employee2",
-      "charts": ["chart-1", "chart-2", "chart-3"]
+      "charts": [
+        "chart-1",
+        "chart-2",
+        "chart-3"
+      ]
+    },
+    {
+      "id": "dashboard-1752559770345",
+      "name": "test1",
+      "description": "testyato",
+      "charts": []
     }
   ],
   "charts": [
@@ -41,15 +55,35 @@
   ],
   "chartData": {
     "signups-by-region": {
-      "labels": ["North America", "Europe", "Asia"],
-      "values": [120, 95, 180]
+      "labels": [
+        "North America",
+        "Europe",
+        "Asia"
+      ],
+      "values": [
+        120,
+        95,
+        180
+      ]
     },
     "orders-over-time": {
-      "labels": ["2025-07-01", "2025-07-02", "2025-07-03", "2025-07-04", "2025-07-05"],
-      "values": [32, 45, 41, 58, 67]
+      "labels": [
+        "2025-07-01",
+        "2025-07-02",
+        "2025-07-03",
+        "2025-07-04",
+        "2025-07-05"
+      ],
+      "values": [
+        32,
+        45,
+        41,
+        58,
+        67
+      ]
     },
     "total-revenue": {
       "value": 98123
     }
   }
-} 
+}

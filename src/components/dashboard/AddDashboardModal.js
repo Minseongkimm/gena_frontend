@@ -1,9 +1,24 @@
 import { useState } from "react";
 import DashboardGridIcon from "@/components/common/icons/DashboardGridIcon";
+import { useDashboardActions } from "@/hooks/useDashboardActions";
 
 export default function AddDashboardModal({ onClose, onSubmit }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const { createDashboard, isLoading, error } = useDashboardActions();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name.trim()) return;
+
+    try {
+      const newDashboard = await createDashboard({ name, description });
+      onSubmit?.(newDashboard); 
+      onClose();
+    } catch (err) {
+      console.error("Failed to create dashboard:", err);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
@@ -20,12 +35,7 @@ export default function AddDashboardModal({ onClose, onSubmit }) {
           </div>
           <h2 className="font-bold text-base text-[#1A2233]">Create New Dashboard</h2>
         </div>
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            if (name.trim()) onSubmit?.({ name, description });
-          }}
-        >
+        <form onSubmit={handleSubmit}>
           <label className="block font-semibold text-gray-900 mb-2 text-sm" htmlFor="dashboard-name">
             Dashboard Name
           </label>
@@ -59,10 +69,10 @@ export default function AddDashboardModal({ onClose, onSubmit }) {
             <button
               type="submit"
               className="px-3 py-2 rounded-lg font-semibold text-white bg-gradient-to-r from-[#3DD6A6] to-[#5B7FFF] flex items-center gap-2 disabled:opacity-50 text-sm"
-              disabled={!name.trim()}
+              disabled={!name.trim() || isLoading}
             >
               <DashboardGridIcon size={20} color="#fff" />
-              Create Dashboard
+              {isLoading ? "Creating..." : "Create Dashboard"}
             </button>
           </div>
         </form>

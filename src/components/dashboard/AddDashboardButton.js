@@ -2,11 +2,16 @@
 import { useState } from "react";
 import AddDashboardModal from "./AddDashboardModal";
 
-export default function AddDashboardButton({ onClick, className = "" }) {
+export default function AddDashboardButton({ className = "", onDashboardCreated }) {
   const [isAddDashboardModalOpen, setIsAddDashboardModalOpen] = useState(false);  
 
   const handleOpenModal = () => {
     setIsAddDashboardModalOpen(true);
+  };
+
+  const handleDashboardCreated = (newDashboard) => {
+    onDashboardCreated?.(newDashboard);
+    setIsAddDashboardModalOpen(false);
   };
 
   return (
@@ -18,7 +23,7 @@ export default function AddDashboardButton({ onClick, className = "" }) {
         + New Dashboard
       </button>
     <>
-      {isAddDashboardModalOpen ? <AddDashboardModal onClose={() => setIsAddDashboardModalOpen(false)} /> : "" }
+      {isAddDashboardModalOpen ? <AddDashboardModal onClose={() => setIsAddDashboardModalOpen(false)} onSubmit={handleDashboardCreated} /> : "" }
     </>
     </>
   );

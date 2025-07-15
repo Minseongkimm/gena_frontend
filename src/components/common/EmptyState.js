@@ -7,7 +7,7 @@ export default function EmptyState({
 }) {
   return (
     <div className="col-span-2 flex w-full">
-      <div className="text-center p-12 bg-white rounded-sm shadow-sm w-full">
+      <div className="flex flex-col items-center justify-center text-center p-12 bg-white rounded-sm shadow-sm w-full">
         <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-lg flex items-center justify-center">
           <ChartTypeIcon type={iconType} size={24} color="#6B7280" />
         </div>
