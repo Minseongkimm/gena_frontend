@@ -1,4 +1,3 @@
-import { HiOutlineDotsVertical } from "react-icons/hi";
 import { HiOutlineChartBar } from "react-icons/hi";
 
 export default function DashboardListCard({ dashboard, onClick }) {

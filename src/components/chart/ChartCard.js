@@ -1,7 +1,8 @@
 'use client';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import ChartBarIcon from "@/components/common/icons/ChartBarIcon";
 import DotsVerticalIcon from "@/components/common/icons/DotsVerticalIcon";
+import ChartSummary from "./ChartSummary";
 
 const data = [
   { name: "asdasd", value: 100 },
@@ -28,20 +29,12 @@ export default function ChartCard() {
       </div>
       
       <div className="grid grid-cols-3 gap-2.5 mb-6 mt-5">
-        <div className="bg-gray-50 rounded-lg py-1.5 flex flex-col items-center">
-          <div className="text-gray-400 text-[10px] mb-1">Total</div>
-          <div className="font-bold text-xs text-black">11,367</div>
-        </div>
-        <div className="bg-gray-50 rounded-lg py-1.5 flex flex-col items-center">
-          <div className="text-gray-400 text-[10px] mb-1">Categories</div>
-          <div className="font-bold text-xs text-black">3</div>
-        </div>
-        <div className="bg-gray-50 rounded-lg py-1.5 flex flex-col items-center">
-          <div className="text-gray-400 text-[10px] mb-1">Highest</div>
-          <div className="font-bold text-xs text-black">11,222</div>
-        </div>
+        <ChartSummary title="Total" value={33332} />
+        <ChartSummary title="Categories" value={3} />
+        <ChartSummary title="Highest" value={11222} />
       </div>
       
+      {/* // 차트 컴포넌트 3개로 나눌것 분기 */}
       <div className="w-full h-56">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
