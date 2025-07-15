@@ -4,7 +4,7 @@ import DashboardInfo from "./DashboardInfo";
 export default function DashboardListCard({ dashboards, onDashboardClick }) {
 
   return (
-    <div className="p-4 ml-7 bg-white rounded-sm shadow transition cursor-pointer flex flex-col gap-2">
+    <div className="p-4 mx-4 lg:ml-7 lg:mr-0 bg-white rounded-sm shadow transition cursor-pointer flex flex-col gap-2">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
           <HiOutlineChartBar className="text-md text-[#1A2233]" />

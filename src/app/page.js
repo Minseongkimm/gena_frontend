@@ -32,9 +32,9 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center px-8 py-5 bg-[#f7fafd] gap-4">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-8 py-5 bg-[#f7fafd] gap-4">
         <HeaderTitle selectedDashboard={selectedDashboard}/>
-        <div className="flex justify-end w-full gap-5">
+        <div className="flex justify-end w-full gap-3 md:gap-5">
           <AddDashboardButton className="w-1/2 md:w-auto" onDashboardCreated={handleDashboardCreated} />
           <AddChartButton 
             className="w-1/2 md:w-auto" 
@@ -43,29 +43,33 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="grid grid-cols-4">
-        <div className="col-span-1">
+      <div className="flex flex-col lg:grid lg:grid-cols-4">
+        <div className="lg:col-span-1 mb-6 lg:mb-0">
           <DashboardListCard 
             dashboards={dashboards}
             onDashboardClick={handleDashboardId}
           />
         </div>
-        <div className="col-span-3 grid grid-cols-2 gap-5 mr-7 ml-7">
+        <div className="lg:col-span-3">
           {isLoading ? (
-            <div className="col-span-2 flex items-center justify-center">
+            <div className="flex items-center justify-center p-8">
               <p>Loading charts...</p>
             </div>
           ) : charts && charts.length > 0 ? (
-            charts.map(chart => (
-              <ChartCard 
-                key={chart.id}
-                chartType={chart.type}
-                data={chart.data}
-                title={chart.title}
-              />
-            ))
-                    ) : (
-            <EmptyState />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 px-4 md:px-7">
+              {charts.map(chart => (
+                <ChartCard 
+                  key={chart.id}
+                  chartType={chart.type}
+                  data={chart.data}
+                  title={chart.title}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="px-4 md:px-7">
+              <EmptyState />
+            </div>
           )}
         </div>
       </div>

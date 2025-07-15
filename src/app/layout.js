@@ -12,8 +12,8 @@ export default function DashboardLayout({ children }) {
         <div className="min-h-screen flex flex-col md:flex-row bg-[#f6f8fb]">
           <aside className="w-full md:w-64 bg-white border-r border-gray-200 flex-shrink-0 flex flex-col">
             <a 
-            href="/dashboards"
-            className="flex items-center gap-3 px-4 py-4 ml-3 md:ml-0 md:px-6 md:py-6">
+            href="/"
+            className="flex items-center gap-3 px-4 py-4 md:px-6 md:py-6">
               <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-gradient-to-tr from-green-400 to-blue-500 rounded-lg flex items-center justify-center shadow">
                 <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18M9 17V9m4 8V5m4 12v-6" />
@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }) {
               <ul>
                 <li>
                   <a
-                    href="/dashboards"
+                    href="/"
                     className="flex items-center gap-2 w-full px-2 py-1.5 rounded-md bg-white shadow-sm border border-gray-100 text-xs text-gray-900 font-medium hover:bg-blue-50 transition"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

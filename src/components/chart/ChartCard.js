@@ -52,7 +52,7 @@ export default function ChartCard({ chartType = "bar", data, title, chart, onCha
 
   return (
     <>
-      <div className="bg-white rounded-sm shadow p-4 w-96 max-w-full">
+      <div className="bg-white rounded-sm shadow p-4 w-full">
         <div className="flex items-start justify-between mb-3.5">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#3DD6A6] to-[#5B7FFF] flex items-center justify-center">
