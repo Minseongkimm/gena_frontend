@@ -5,13 +5,16 @@ import ChartCard from "@/components/chart/ChartCard";
 import HeaderTitle from "@/components/common/HeaderTitle";
 import AddDashboardButton from "@/components/dashboard/AddDashboardButton";
 import DashboardListCard from "@/components/dashboard/DashboardListCard";
+import EmptyState from "@/components/common/EmptyState";
 import { useDashboardsList } from "@/hooks/useDashboardList";
 import { useDashboard } from "@/hooks/useDashboard";
+import { useDashboardCharts } from "@/hooks/useDashboardCharts";
 
 export default function Home() {
   const { dashboards } = useDashboardsList();
   const [selectedDashboardId, setSelectedDashboardId] = useState(null);
   const { dashboard: selectedDashboard } = useDashboard(selectedDashboardId);
+  const { charts, isLoading } = useDashboardCharts(selectedDashboardId);
 
   const handleDashboardId = (dashboardId) => {
     setSelectedDashboardId(dashboardId);
@@ -34,11 +37,25 @@ export default function Home() {
           />
         </div>
         <div className="col-span-3 grid grid-cols-2 gap-5 mr-7 ml-7">
-        {/* map */}
-          <ChartCard />
-          <ChartCard />
+          {isLoading ? (
+            <div className="col-span-2 flex items-center justify-center">
+              <p>Loading charts...</p>
+            </div>
+          ) : charts && charts.length > 0 ? (
+            charts.map(chart => (
+              <ChartCard 
+                key={chart.id}
+                chartType={chart.type}
+                data={chart.data}
+                title={chart.title}
+              />
+            ))
+                    ) : (
+            <EmptyState />
+          )}
         </div>
       </div>
+      <div className="h-8"></div>
     </div>
   );
 }

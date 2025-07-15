@@ -1,5 +1,4 @@
 export default function HeaderTitle({ selectedDashboard }) {
-  console.log('header', selectedDashboard);
 
   if (!selectedDashboard) {
     return (
