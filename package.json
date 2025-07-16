@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "api": "json-server --watch db.json --port 4000 --no-cors"
+    "api": "json-server --watch db.json --port 4000"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",

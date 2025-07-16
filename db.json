@@ -2,169 +2,108 @@
   "dashboards": [
     {
       "id": "dashboard-1752559770345",
-      "name": "test1",
-      "description": "testyato",
+      "name": "Marketing KPIs",
+      "description": "MAU, Cost, etc",
       "charts": [
         "chart-1752589540949",
-        "chart-1752589616024"
+        "chart-1752589616024",
+        "chart-1752631882861"
       ]
     },
     {
       "id": "dashboard-1752589109346",
-      "name": "test1123",
-      "description": "test22",
+      "name": "Signups by Region",
+      "description": "In Korea",
       "charts": [
-        "chart-1752589625325"
+        "chart-1752632127233"
       ]
     },
     {
-      "id": "dashboard-1752589380719",
-      "name": "ㅁㄴㅇㅁㄴㅇ12",
-      "description": "123123",
+      "id": "dashboard-1752632057523",
+      "name": "Sales KPIs",
+      "description": "Revenue, etc",
       "charts": []
     }
   ],
   "charts": [
     {
-      "id": "chart-1",
-      "dashboardId": null,
-      "type": "line",
-      "title": "Signups by Region",
-      "dataEndpoint": "/api/data/signups-by-region",
-      "order": 0
-    },
-    {
-      "id": "chart-1752564440468",
-      "dashboardId": null,
-      "type": "line",
-      "title": "abcbc",
-      "dataEndpoint": "/api/data/abcbc",
-      "order": 1,
-      "data": {
-        "labels": [
-          "aaa",
-          "abc",
-          "asdasd"
-        ],
-        "values": [
-          11,
-          2156,
-          123123
-        ]
-      }
-    },
-    {
-      "id": "chart-1752564458801",
-      "dashboardId": null,
-      "type": "bar",
-      "title": "test",
-      "dataEndpoint": "/api/data/test",
-      "order": 2,
-      "data": {
-        "labels": [
-          "asdasdsadasd",
-          "abasb"
-        ],
-        "values": [
-          11,
-          347
-        ]
-      }
-    },
-    {
-      "id": "chart-1752564464161",
-      "dashboardId": null,
-      "type": "number",
-      "title": "asdfadsf",
-      "dataEndpoint": "/api/data/asdfadsf",
-      "order": 0,
-      "data": {
-        "value": 111
-      }
-    },
-    {
       "id": "chart-1752589540949",
       "dashboardId": "dashboard-1752559770345",
       "type": "bar",
-      "title": "123123",
-      "dataEndpoint": "/api/data/123123",
-      "order": 3
+      "title": "MAU",
+      "dataEndpoint": "/api/data/mau",
+      "order": 0
     },
     {
       "id": "chart-1752589616024",
       "dashboardId": "dashboard-1752559770345",
       "type": "line",
-      "title": "test2",
-      "dataEndpoint": "/api/data/test2",
-      "order": 4
+      "title": "Marketing Cost",
+      "dataEndpoint": "/api/data/marketing-cost",
+      "order": 1
     },
     {
-      "id": "chart-1752589625325",
-      "dashboardId": "dashboard-1752589109346",
+      "id": "chart-1752631882861",
+      "dashboardId": "dashboard-1752559770345",
       "type": "number",
-      "title": "asdf",
-      "dataEndpoint": "/api/data/asdf",
-      "order": 3
+      "title": "Highest Revenue",
+      "dataEndpoint": "/api/data/highest-revenue",
+      "order": 2
+    },
+    {
+      "id": "chart-1752632127233",
+      "dashboardId": "dashboard-1752589109346",
+      "type": "bar",
+      "title": "number of registrations",
+      "dataEndpoint": "/api/data/number-of-registrations",
+      "order": 0
     }
   ],
   "chartData": {
-    "123123": {
+    "mau": {
       "labels": [
-        "ㅁㅁㅁ",
-        "asdasd"
+        "January",
+        "February",
+        "March",
+        "April"
       ],
       "values": [
-        11,
-        123
+        110,
+        120,
+        150,
+        200
       ]
     },
-    "test33": [
-      {
-        "label": "asd",
-        "value": 1234
-      },
-      {
-        "label": "abasb",
-        "value": 12512
-      }
-    ],
-    "abcbc": {
+    "marketing-cost": {
       "labels": [
-        "aaa",
-        "abc",
-        "asdasd"
+        "January",
+        "February",
+        "March",
+        "April",
+        "May"
       ],
       "values": [
-        11,
-        2156,
-        123123
+        1100,
+        1130,
+        1150,
+        1600,
+        1700
       ]
     },
-    "test": {
+    "highest-revenue": {
+      "value": 1600
+    },
+    "number-of-registrations": {
       "labels": [
-        "asdasdsadasd",
-        "abasb"
+        "Busan",
+        "Seoul",
+        "hanam"
       ],
       "values": [
-        11,
-        347
+        150,
+        110,
+        50
       ]
-    },
-    "asdfadsf": {
-      "value": 111
-    },
-    "test2": {
-      "labels": [
-        "aaa",
-        "asdb"
-      ],
-      "values": [
-        123,
-        123
-      ]
-    },
-    "asdf": {
-      "value": 111
     }
   }
 }

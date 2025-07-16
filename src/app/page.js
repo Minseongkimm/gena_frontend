@@ -30,6 +30,10 @@ export default function Home() {
     setRefreshTrigger(prev => prev + 1);
   };
 
+  const handleChartUpdated = (updatedChart) => {
+    setRefreshTrigger(prev => prev + 1);
+  };
+
   return (
     <div>
       <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-8 py-5 bg-[#f7fafd] gap-4">
@@ -60,9 +64,11 @@ export default function Home() {
               {charts.map(chart => (
                 <ChartCard 
                   key={chart.id}
+                  chart={chart}
                   chartType={chart.type}
                   data={chart.data}
                   title={chart.title}
+                  onChartUpdated={handleChartUpdated}
                 />
               ))}
             </div>
