@@ -7,6 +7,7 @@ export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // If no dashboard ID, set loading to false and return
     if (!dashboardId) {
       setIsLoading(false);
       return;
@@ -17,14 +18,17 @@ export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
       setError(null);
       
       try {
+        // Step 1: Fetch dashboard information
         const dashboardRes = await fetch(`http://localhost:4000/dashboards/${dashboardId}`);
         if (!dashboardRes.ok) {
           throw new Error(`Failed to fetch dashboard: ${dashboardRes.status}`);
         }
         const dashboard = await dashboardRes.json();
 
+        // Extract chart IDs linked to the dashboard (empty array if none)
         const dashboardChartIds = dashboard.charts || [];
 
+        // Step 2: Fetch each chart's information
         const dashboardCharts = [];
         for (const chartId of dashboardChartIds) {
           const chartRes = await fetch(`http://localhost:4000/charts/${chartId}`);
@@ -34,14 +38,17 @@ export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
           }
         }
 
+        // Step 3: Fetch all chart data
         const chartDataRes = await fetch(`http://localhost:4000/chartData`);
         if (!chartDataRes.ok) {
           throw new Error(`Failed to fetch chart data: ${chartDataRes.status}`);
         }
         const allChartData = await chartDataRes.json();
 
+        // Step 4: Combine chart information with data
         const chartsWithData = dashboardCharts.map((chart) => {
-          const dataKey = chart.dataEndpoint.split('/').pop(); // "signups-by-region"
+          // Extract data key from dataEndpoint (e.g., "/api/data/signups-by-region" → "signups-by-region")
+          const dataKey = chart.dataEndpoint.split('/').pop();
           const data = allChartData[dataKey];
           
           return {
@@ -50,10 +57,12 @@ export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
           };
         });
 
+        // Step 5: Sort charts by order (ascending order based on order field)
         const sortedCharts = chartsWithData.sort((a, b) => (a.order || 0) - (b.order || 0));
 
         setCharts(sortedCharts);
         
+        // Step 6: Convert chart data to key-value format for storage
         const dataObject = {};
         sortedCharts.forEach(chart => {
           const dataKey = chart.dataEndpoint.split('/').pop();

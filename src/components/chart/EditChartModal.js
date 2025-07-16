@@ -12,6 +12,7 @@ const CHART_TYPES = [
 ];
 
 export default function EditChartModal({ onClose, onSubmit, chart, chartData }) {
+  // Form state for editing chart
   const [form, setForm] = useState({
     title: "",
     chartType: "bar",
@@ -19,15 +20,17 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
     labelInput: "",
     data: []
   });
-  const { updateChart, isLoading, error } = useDashboardActions();
+  const { updateChart, isLoading } = useDashboardActions();
 
   useEffect(() => {
     if (chart && chartData) {
       setForm({
         title: chart.title,
         chartType: chart.type,
+        // For number charts, set the single value
         valueInput: chart.type === "number" ? (chartData.value || "").toString() : "",
         labelInput: "",
+        // For bar/line charts, convert labels and values to form data format
         data: chart.type !== "number" && chartData.labels ? 
           chartData.labels.map((label, index) => ({
             label,
@@ -55,6 +58,7 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
     }));
   };
 
+  // Validation states
   const isAddDisabled = !form.labelInput.trim() || !form.valueInput.trim();
   const isSubmitDisabled = !form.title.trim() || 
     (form.chartType === "number" ? !form.valueInput.trim() : form.data.length === 0);
@@ -67,8 +71,10 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
       let chartDataToSave = {};
       
       if (form.chartType === "number") {
+        // For number charts, save single value
         chartDataToSave = { value: parseFloat(form.valueInput) || 0 };
       } else {
+        // For bar/line charts, save labels and values arrays
         const labels = form.data.map(item => item.label);
         const values = form.data.map(item => parseFloat(item.value) || 0);
         chartDataToSave = { labels, values };
@@ -79,6 +85,7 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
         dashboardId: chart.dashboardId,
         type: form.chartType,
         title: form.title,
+        // Generate new data endpoint from updated title
         dataEndpoint: `${form.title.toLowerCase().replace(/\s+/g, '-')}`,
         order: chart.order || 0,
         chartData: chartDataToSave
@@ -100,17 +107,20 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
         >
           ×
         </button>
+        
         <div className="flex items-center gap-3 mb-8">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#3DD6A6] to-[#5B7FFF] flex items-center justify-center">
             <ChartTypeIcon type={form.chartType} size={28} color="#fff" />
           </div>
           <h2 className="font-semibold text-lg text-[#1A2233]">Edit Chart</h2>
         </div>
+        
         <ChartTypeSelector 
           chartType={form.chartType} 
           setChartType={(type) => setForm(prev => ({ ...prev, chartType: type }))} 
           chartTypes={CHART_TYPES} 
         />
+        
         <form onSubmit={handleSubmit}>
           <label className="block font-semibold text-gray-900 mb-2 text-sm" htmlFor="chart-title">
             Chart Title
@@ -123,7 +133,9 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
             onChange={e => setForm(prev => ({ ...prev, title: e.target.value }))}
             required
           />
+          
           {form.chartType === "number" ? (
+            // Number chart - single value input
             <>
               <label className="block font-semibold text-gray-900 mb-2 text-sm">Value</label>
               <input
@@ -136,6 +148,7 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
               />
             </>
           ) : (
+            // Bar/Line chart - multiple data points input
             <>
               <label className="block font-semibold text-gray-900 mb-2 text-sm">Data</label>
               <ChartDataInput
@@ -149,6 +162,7 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
               <ChartDataList data={form.data} onRemove={handleRemoveData} />
             </>
           )}
+          
           <div className="flex justify-end gap-3 mt-2">
             <button
               type="button"

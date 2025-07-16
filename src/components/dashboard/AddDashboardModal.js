@@ -5,13 +5,14 @@ import { useDashboardActions } from "@/hooks/useDashboardActions";
 export default function AddDashboardModal({ onClose, onSubmit }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const { createDashboard, isLoading, error } = useDashboardActions();
+  const { createDashboard, isLoading } = useDashboardActions();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name.trim()) return;
 
     try {
+      // create a new dashboard
       const newDashboard = await createDashboard({ name, description });
       onSubmit?.(newDashboard); 
       onClose();

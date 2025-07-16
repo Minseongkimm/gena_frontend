@@ -12,6 +12,7 @@ export default function ChartCard({ chartType = "bar", data, title, chart, onCha
 
   const calculateStats = () => {
     if (chartType === "number") {
+      // For number charts, return single value
       return {
         total: data?.value || 0,
         categories: 1,
@@ -20,6 +21,7 @@ export default function ChartCard({ chartType = "bar", data, title, chart, onCha
     }
     
     if (data?.values && Array.isArray(data.values)) {
+      // For bar/line charts, calculate from values array
       const values = data.values;
       return {
         total: values.reduce((sum, val) => sum + (parseFloat(val) || 0), 0),
@@ -28,6 +30,7 @@ export default function ChartCard({ chartType = "bar", data, title, chart, onCha
       };
     }
     
+    // Default values when no data is available
     return {
       total: 0,
       categories: 0,
@@ -60,7 +63,9 @@ export default function ChartCard({ chartType = "bar", data, title, chart, onCha
             </div>
             <div>
               <div className="font-bold text-base text-[#1A2233]">{title}</div>
-              <div className="text-gray-400 text-xs">{chartType === "line" ? "Line Chart" : chartType === "number" ? "Number" : "Bar Chart"}</div>
+              <div className="text-gray-400 text-xs">
+                {chartType === "line" ? "Line Chart" : chartType === "number" ? "Number" : "Bar Chart"}
+              </div>
             </div>
           </div>
           <div className="mt-2 cursor-pointer" onClick={handleEditClick}>
@@ -68,9 +73,11 @@ export default function ChartCard({ chartType = "bar", data, title, chart, onCha
           </div>
         </div>
         
+        {/* Chart statistics (only for bar/line charts, not for number charts) */}
         {chartType !== "number" && <ChartStats stats={stats} />}
         
-        <div className="w-full h-56">
+        {/* Chart visualization area */}
+        <div className="w-full h-64">
           {chartType === "number" ? (
             <NumberChartComponent data={data} title={title} />
           ) : (

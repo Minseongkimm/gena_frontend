@@ -26,11 +26,7 @@ export default function Home() {
     setSelectedDashboardId(newDashboard.id);
   };
 
-  const handleChartCreated = (newChart) => {
-    setRefreshTrigger(prev => prev + 1);
-  };
-
-  const handleChartUpdated = (updatedChart) => {
+  const handleChartChange = () => {
     setRefreshTrigger(prev => prev + 1);
   };
 
@@ -43,11 +39,11 @@ export default function Home() {
           <AddChartButton 
             className="w-1/2 md:w-auto" 
             selectedDashboardId={selectedDashboardId}
-            onChartCreated={handleChartCreated}
+            onChartCreated={handleChartChange}
           />
         </div>
       </div>
-      <div className="flex flex-col lg:grid lg:grid-cols-4">
+      <div className="flex flex-col lg:grid lg:grid-cols-4 lg:mt-6">
         <div className="lg:col-span-1 mb-6 lg:mb-0">
           <DashboardListCard 
             dashboards={dashboards}
@@ -56,10 +52,12 @@ export default function Home() {
         </div>
         <div className="lg:col-span-3">
           {isLoading ? (
+            // when loading
             <div className="flex items-center justify-center p-8">
               <p>Loading charts...</p>
             </div>
           ) : charts && charts.length > 0 ? (
+            // when charts are loaded
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 px-4 md:px-7">
               {charts.map(chart => (
                 <ChartCard 
@@ -68,11 +66,12 @@ export default function Home() {
                   chartType={chart.type}
                   data={chart.data}
                   title={chart.title}
-                  onChartUpdated={handleChartUpdated}
+                  onChartUpdated={handleChartChange}
                 />
               ))}
             </div>
           ) : (
+            // when charts are not loaded
             <div className="px-4 md:px-7">
               <EmptyState />
             </div>

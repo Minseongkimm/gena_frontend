@@ -11,6 +11,7 @@ export function useDashboard(id) {
       return;
     }
 
+    // fetch dashboard data from the API by dashboardId
     async function fetchDashboard() {
       setIsLoading(true);
       setError(null);

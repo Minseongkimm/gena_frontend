@@ -10,6 +10,7 @@ export default function AddDashboardButton({ className = "", onDashboardCreated 
   };
 
   const handleDashboardCreated = (newDashboard) => {
+    // if onDashboardCreated is provided, call it with the new dashboard
     onDashboardCreated?.(newDashboard);
     setIsAddDashboardModalOpen(false);
   };

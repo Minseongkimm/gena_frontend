@@ -7,6 +7,7 @@ export default function AddChartButton({ className = "", selectedDashboardId, on
   const [isAddChartModalOpen, setIsAddChartModalOpen] = useState(false);
 
   const handleOpenModal = () => {
+    // if no dashboard is selected, show an alert
     if (!selectedDashboardId) {
       alert("Please select a dashboard first");
       return;

@@ -1,14 +1,17 @@
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function ChartComponent({ type, data }) {
-  // data chagne: { labels: [...], values: [...] } → [{ name: "...", value: ... }]
+  // Transform data format: { labels: [...], values: [...] } → [{ name: "...", value: ... }]
+  // Recharts expects data in array format with 'name' and 'value' properties
   const transformedData = data?.labels?.map((label, index) => ({
     name: label,
     value: data.values[index]
   })) || [];
 
+  // Common chart elements shared between bar and line charts
   const commonElements = (
     <>
+      {/* Grid lines for better readability */}
       <CartesianGrid strokeDasharray="3 3" vertical={false} />
       <XAxis dataKey="name" tick={{ fill: "#7B849B", fontSize: 11 }} />
       <YAxis tick={{ fill: "#7B849B", fontSize: 11 }} />

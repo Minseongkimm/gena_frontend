@@ -10,6 +10,7 @@ export function useDashboardsList(refreshTrigger = 0) {
     setError(null);
     
     try {
+      // fetch all dashboards data from the API
       const res = await fetch("http://localhost:4000/dashboards");
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
