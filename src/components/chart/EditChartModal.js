@@ -80,6 +80,7 @@ export default function EditChartModal({ onClose, onSubmit, chart, chartData }) 
         type: form.chartType,
         title: form.title,
         dataEndpoint: `${form.title.toLowerCase().replace(/\s+/g, '-')}`,
+        order: chart.order || 0,
         chartData: chartDataToSave
       };
 
