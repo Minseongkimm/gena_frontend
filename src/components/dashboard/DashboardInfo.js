@@ -10,8 +10,8 @@ export default function DashboardInfo({ dashboard, onDashboardClick }) {
       onClick={handleClick}
     >
       <div>
-        <h2 className="text-[11px] text-black mb-1">{dashboard.name}</h2>
-        <p className="text-gray-500 text-[11px] mb-1">{dashboard.description}</p>
+        <h2 className="text-sm text-black mb-1">{dashboard.name}</h2>
+        <p className="text-gray-500 text-sm mb-1">{dashboard.description}</p>
       </div>
     </div>
   );

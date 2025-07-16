@@ -22,7 +22,7 @@ export default function AddChartButton({ className = "", selectedDashboardId, on
   return (
     <>
       <button
-        className={`px-3 py-2 bg-gradient-to-tr from-green-400 to-blue-500 text-white text-xs rounded hover:cursor-pointer ${className}`}
+        className={`px-4 py-2 bg-gradient-to-tr from-green-400 to-blue-500 text-white text-sm rounded hover:cursor-pointer ${className}`}
         onClick={handleOpenModal}
       >
         + Add Chart

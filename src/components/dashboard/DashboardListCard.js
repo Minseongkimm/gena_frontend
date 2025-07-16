@@ -8,7 +8,7 @@ export default function DashboardListCard({ dashboards, onDashboardClick }) {
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
           <HiOutlineChartBar className="text-md text-[#1A2233]" />
-          <h2 className="font-semibold text-sm text-black">Dashboard</h2>
+          <h2 className="font-semibold text-lg text-black">Dashboard</h2>
         </div>
       </div>
       <div>

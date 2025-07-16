@@ -25,7 +25,7 @@ export default function DashboardLayout({ children }) {
                 <div className="text-xs text-gray-400 hidden md:block">Dashboard, Charts</div>
               </div>
             </Link>
-            <div className="px-6 pt-6 pb-2 text-xs text-gray-400 tracking-wide hidden md:block">
+            <div className="px-6 pt-6 pb-2 text-sm text-gray-400 tracking-wide hidden md:block">
               Navigation
             </div>
             <nav className="px-6 hidden md:block">
@@ -33,7 +33,7 @@ export default function DashboardLayout({ children }) {
                 <li>
                   <Link
                     href="/"
-                    className="flex items-center gap-2 w-full px-2 py-1.5 rounded-md bg-white shadow-sm border border-gray-100 text-xs text-gray-900 font-medium hover:bg-blue-50 transition"
+                    className="flex items-center gap-2 w-full px-2 py-1.5 rounded-md bg-white shadow-sm border border-gray-100 text-sm text-gray-900 font-medium hover:bg-blue-50 transition"
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8v-10h-8v10zm0-18v6h8V3h-8z"/>

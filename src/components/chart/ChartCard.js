@@ -59,8 +59,8 @@ export default function ChartCard({ chartType = "bar", data, title, chart, onCha
               <ChartTypeIcon type={chartType} size={20} color="#fff" />
             </div>
             <div>
-              <div className="font-bold text-sm text-[#1A2233]">{title}</div>
-              <div className="text-gray-400 text-[9px]">{chartType === "line" ? "Line Chart" : chartType === "number" ? "Number" : "Bar Chart"}</div>
+              <div className="font-bold text-base text-[#1A2233]">{title}</div>
+              <div className="text-gray-400 text-xs">{chartType === "line" ? "Line Chart" : chartType === "number" ? "Number" : "Bar Chart"}</div>
             </div>
           </div>
           <div className="mt-2 cursor-pointer" onClick={handleEditClick}>

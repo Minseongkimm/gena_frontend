@@ -61,14 +61,14 @@ export default function AddDashboardModal({ onClose, onSubmit }) {
           <div className="flex justify-end gap-3 mt-2">
             <button
               type="button"
-              className="px-4 py-2 rounded-lg border border-gray-200 bg-white text-gray-700 font-semibold hover:bg-gray-50 transition text-sm"
+              className="cursor-pointer px-4 py-2 rounded-lg border border-gray-200 bg-white text-gray-700 font-semibold hover:bg-gray-50 transition text-sm"
               onClick={onClose}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-3 py-2 rounded-lg font-semibold text-white bg-gradient-to-r from-[#3DD6A6] to-[#5B7FFF] flex items-center gap-2 disabled:opacity-50 text-sm"
+              className="cursor-pointer px-3 py-2 rounded-lg font-semibold text-white bg-gradient-to-r from-[#3DD6A6] to-[#5B7FFF] flex items-center gap-2 disabled:opacity-50 text-sm"
               disabled={!name.trim() || isLoading}
             >
               <DashboardGridIcon size={20} color="#fff" />
