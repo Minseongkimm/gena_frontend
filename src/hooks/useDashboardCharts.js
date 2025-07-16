@@ -23,11 +23,16 @@ export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
         }
         const dashboard = await dashboardRes.json();
 
-        const chartsRes = await fetch(`http://localhost:4000/charts?dashboardId=${dashboardId}`);
-        if (!chartsRes.ok) {
-          throw new Error(`Failed to fetch charts: ${chartsRes.status}`);
+        const dashboardChartIds = dashboard.charts || [];
+
+        const dashboardCharts = [];
+        for (const chartId of dashboardChartIds) {
+          const chartRes = await fetch(`http://localhost:4000/charts/${chartId}`);
+          if (chartRes.ok) {
+            const chart = await chartRes.json();
+            dashboardCharts.push(chart);
+          }
         }
-        const charts = await chartsRes.json();
 
         const chartDataRes = await fetch(`http://localhost:4000/chartData`);
         if (!chartDataRes.ok) {
@@ -35,7 +40,7 @@ export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
         }
         const allChartData = await chartDataRes.json();
 
-        const chartsWithData = charts.map((chart) => {
+        const chartsWithData = dashboardCharts.map((chart) => {
           const dataKey = chart.dataEndpoint.split('/').pop(); // "signups-by-region"
           const data = allChartData[dataKey];
           
@@ -45,10 +50,12 @@ export function useDashboardCharts(dashboardId, refreshTrigger = 0) {
           };
         });
 
-        setCharts(chartsWithData);
+        const sortedCharts = chartsWithData.sort((a, b) => (a.order || 0) - (b.order || 0));
+
+        setCharts(sortedCharts);
         
         const dataObject = {};
-        chartsWithData.forEach(chart => {
+        sortedCharts.forEach(chart => {
           const dataKey = chart.dataEndpoint.split('/').pop();
           dataObject[dataKey] = chart.data;
         });

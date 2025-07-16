@@ -1,36 +1,33 @@
 {
   "dashboards": [
     {
-      "id": "dashboard-1",
-      "name": "Marketing KPIs",
-      "description": "Marketing KPIs for employee",
-      "charts": [
-        "chart-1",
-        "chart-2",
-        "chart-3"
-      ]
-    },
-    {
-      "id": "dashboard-2",
-      "name": "Marketing KPIs2",
-      "description": "Marketing KPIs for employee2",
-      "charts": [
-        "chart-1",
-        "chart-2",
-        "chart-3"
-      ]
-    },
-    {
       "id": "dashboard-1752559770345",
       "name": "test1",
       "description": "testyato",
+      "charts": [
+        "chart-1752589540949",
+        "chart-1752589616024"
+      ]
+    },
+    {
+      "id": "dashboard-1752589109346",
+      "name": "test1123",
+      "description": "test22",
+      "charts": [
+        "chart-1752589625325"
+      ]
+    },
+    {
+      "id": "dashboard-1752589380719",
+      "name": "ㅁㄴㅇㅁㄴㅇ12",
+      "description": "123123",
       "charts": []
     }
   ],
   "charts": [
     {
       "id": "chart-1",
-      "dashboardId": "dashboard-1",
+      "dashboardId": null,
       "type": "line",
       "title": "Signups by Region",
       "dataEndpoint": "/api/data/signups-by-region",
@@ -38,7 +35,7 @@
     },
     {
       "id": "chart-1752564440468",
-      "dashboardId": "dashboard-2",
+      "dashboardId": null,
       "type": "line",
       "title": "abcbc",
       "dataEndpoint": "/api/data/abcbc",
@@ -58,7 +55,7 @@
     },
     {
       "id": "chart-1752564458801",
-      "dashboardId": "dashboard-2",
+      "dashboardId": null,
       "type": "bar",
       "title": "test",
       "dataEndpoint": "/api/data/test",
@@ -76,7 +73,7 @@
     },
     {
       "id": "chart-1752564464161",
-      "dashboardId": "dashboard-2",
+      "dashboardId": null,
       "type": "number",
       "title": "asdfadsf",
       "dataEndpoint": "/api/data/asdfadsf",
@@ -84,37 +81,42 @@
       "data": {
         "value": 111
       }
+    },
+    {
+      "id": "chart-1752589540949",
+      "dashboardId": "dashboard-1752559770345",
+      "type": "bar",
+      "title": "123123",
+      "dataEndpoint": "/api/data/123123",
+      "order": 3
+    },
+    {
+      "id": "chart-1752589616024",
+      "dashboardId": "dashboard-1752559770345",
+      "type": "line",
+      "title": "test2",
+      "dataEndpoint": "/api/data/test2",
+      "order": 4
+    },
+    {
+      "id": "chart-1752589625325",
+      "dashboardId": "dashboard-1752589109346",
+      "type": "number",
+      "title": "asdf",
+      "dataEndpoint": "/api/data/asdf",
+      "order": 3
     }
   ],
   "chartData": {
-    "signups-by-region": {
+    "123123": {
       "labels": [
-        "aaa",
-        "a cc"
+        "ㅁㅁㅁ",
+        "asdasd"
       ],
       "values": [
-        111,
+        11,
         123
       ]
-    },
-    "orders-over-time": {
-      "labels": [
-        "2025-07-01",
-        "2025-07-02",
-        "2025-07-03",
-        "2025-07-04",
-        "2025-07-05"
-      ],
-      "values": [
-        32,
-        45,
-        41,
-        58,
-        67
-      ]
-    },
-    "total-revenue": {
-      "value": 98123
     },
     "test33": [
       {
@@ -149,6 +151,19 @@
       ]
     },
     "asdfadsf": {
+      "value": 111
+    },
+    "test2": {
+      "labels": [
+        "aaa",
+        "asdb"
+      ],
+      "values": [
+        123,
+        123
+      ]
+    },
+    "asdf": {
       "value": 111
     }
   }

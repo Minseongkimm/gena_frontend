@@ -73,6 +73,23 @@ export function useDashboardActions() {
 
       const newChart = await chartResponse.json();
 
+      const dashboardResponse = await fetch(`http://localhost:4000/dashboards/${chartData.dashboardId}`);
+      if (dashboardResponse.ok) {
+        const dashboard = await dashboardResponse.json();
+        const updatedCharts = [...(dashboard.charts || []), newChart.id];
+        
+        await fetch(`http://localhost:4000/dashboards/${chartData.dashboardId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...dashboard,
+            charts: updatedCharts
+          }),
+        });
+      }
+
       if (chartData.chartData) {
         const dataKey = chartData.dataEndpoint;
         
