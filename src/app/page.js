@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4 md:px-8 py-5 bg-[#f7fafd] gap-4">
+      <div className="flex flex-col mt-0 md:mt-1 md:flex-row md:justify-between md:items-center px-4 md:px-8 py-5 bg-[#f7fafd] gap-4">
         <HeaderTitle selectedDashboard={selectedDashboard}/>
         <div className="flex justify-end w-full gap-3 md:gap-5">
           <AddDashboardButton className="w-1/2 md:w-auto" onDashboardCreated={handleDashboardCreated} />
